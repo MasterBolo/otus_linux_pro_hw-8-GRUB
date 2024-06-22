@@ -39,4 +39,19 @@ Check GRUB_DISABLE_OS_PROBER documentation entry.
 done
 root@grub:~# reboot
 ```
+
+## Попасть в систему без пароля несколькими способами
+
+Открываем GUI VirtualBox , запускаем виртуальную машину и при выборе ядра для загрузки нажимаем e - в данном контексте edit. 
+Попадаем в окно, где мы можем изменить параметры загрузки:
+
 ![Image 1](screenshots/pic1.png)
+
+Способ № 1. init=/bin/bash
+В конце строки, начинающейся с linux, добавляем init=/bin/bash и нажимаем сtrl-x для загрузки в систему.
+
+![Image 2](screenshots/pic2.png)
+
+Рутовая файловая система при этом монтируется в режиме Read-Only. Для монтирования ее в режим Read-Write, вводим команду:
+
+![Image 2](screenshots/pic2.png)
