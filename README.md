@@ -39,3 +39,4 @@ Check GRUB_DISABLE_OS_PROBER documentation entry.
 done
 root@grub:~# reboot
 ```
+![Image 1](otus_linux_pro_hw-8-GRUB/screenshots/pic1.png)
