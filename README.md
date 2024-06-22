@@ -62,7 +62,7 @@ root@grub:~# reboot
 
 ![Image 4](screenshots/pic4.png)
 
-Далее прогружаемся в рутовую консоль
+Далее прогружаемся в рутовую консоль:
 
 ![Image 4](screenshots/pic4-1.png)
 
