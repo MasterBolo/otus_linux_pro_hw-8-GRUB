@@ -48,7 +48,6 @@ root@grub:~# reboot
 ![Image 1](screenshots/pic1.png)
 
 Способ № 1. init=/bin/bash
-
 В конце строки, начинающейся с linux, добавляем init=/bin/bash и нажимаем сtrl-x для загрузки в систему.
 
 ![Image 2](screenshots/pic2.png)
@@ -56,3 +55,33 @@ root@grub:~# reboot
 Рутовая файловая система при этом монтируется в режиме Read-Only. Для монтирования ее в режим Read-Write вводим команду:
 
 ![Image 3](screenshots/pic3.png)
+
+Способ №2. Recovery mode
+
+В меню загрузчика на первом уровне выбираем второй пункт (Advanced options…), далее выбираем пункт меню с указанием recovery mode в названии. 
+
+![Image 4](screenshots/pic4.png)
+
+Далее прогружаемся в рутовую консоль
+
+![Image 4](screenshots/pic4-1.png)
+
+## Установка системы с LVM, переименование VG
+
+Смотрим текущее состояние системы и переименовываем VG
+```
+root@grub:~# vgs
+  VG        #PV #LV #SN Attr   VSize   VFree 
+  ubuntu-vg   1   1   0 wz--n- <62.00g 31.00g
+root@grub:~# vgrename ubuntu-vg ubuntu-otus
+  Volume group "ubuntu-vg" successfully renamed to "ubuntu-otus"
+```
+
+Далее правим /boot/grub/grub.cfg. Везде заменяем старое название VG на новое:
+
+```
+linux   /vmlinuz-5.15.0-102-generic root=/dev/mapper/ubuntu--otus-ubuntu--lv ro net.ifnames=0 biosdevname=0
+```
+Перезагружаемся и проверяем:
+
+![Image 5](screenshots/pic8.png)
