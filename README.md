@@ -55,4 +55,4 @@ root@grub:~# reboot
 
 Рутовая файловая система при этом монтируется в режиме Read-Only. Для монтирования ее в режим Read-Write, вводим команду:
 
-![Image 2](screenshots/pic2.png)
+![Image 3](screenshots/pic3.png)
