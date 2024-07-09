@@ -153,7 +153,6 @@ echo " continuing...."
 Обновляем конфигурацию загрузчика и перезагружаемся для проверки:
 ```
 root@grub:~# update-grub
-root@grub:~# update-grub
 Sourcing file `/etc/default/grub'
 Sourcing file `/etc/default/grub.d/init-select.cfg'
 Generating grub configuration file ...
