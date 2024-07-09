@@ -165,4 +165,4 @@ done
 
 root@grub:~# reboot
 ```
-![Image 5](screenshots/pic8.png)
+![Image 5](screenshots/pic9.png)
