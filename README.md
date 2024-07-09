@@ -100,7 +100,8 @@ linux   /vmlinuz-5.15.0-102-generic root=/dev/mapper/ubuntu--otus-ubuntu--lv ro 
 ```
 root@grub:~# mkdir /usr/lib/dracut/modules.d/01test
 root@grub:~# vi /usr/lib/dracut/modules.d/01test/module-setup.sh
-````
+```
+
 ``` 
 #!/bin/bash
 
@@ -165,4 +166,4 @@ done
 
 root@grub:~# reboot
 ```
-![Image 5](screenshots/pic9.png)
+![Image 6](screenshots/pic9.png)
