@@ -85,3 +85,84 @@ linux   /vmlinuz-5.15.0-102-generic root=/dev/mapper/ubuntu--otus-ubuntu--lv ro 
 Перезагружаемся и проверяем:
 
 ![Image 5](screenshots/pic8.png)
+
+## Добавить модуль в initrd
+
+Устанавливаем dracut:
+
+``` root@grub:~# apt install dracut ```
+
+Скрипты модулей хранятся по пути: /usr/lib/dracut/modules.d/. Создадим в директории папку "01test" и
+в ней фаилы скриптов: module-setup.sh и test.sh.
+
+В фаил module-setup.sh и test.sh добавим следующее содержимое:
+
+```
+root@grub:~# mkdir /usr/lib/dracut/modules.d/01test
+root@grub:~# vi /usr/lib/dracut/modules.d/01test/module-setup.sh
+````
+``` 
+#!/bin/bash
+
+check() { # Функция, которая указывает что модуль должен быть включен по умолчанию
+    return 0
+}
+
+depends() { # Выводит все зависимости от которых зависит наш модуль
+    return 0
+}
+
+install() {
+
+    inst_hook cleanup 00 "${moddir}/test.sh" # Запускает скрипт
+}
+
+```
+```
+root@grub:~# vi /usr/lib/dracut/modules.d/01test/test.sh
+```
+```
+#!/bin/bash
+
+exec 0<>/dev/console 1<>/dev/console 2<>/dev/console
+cat <<'msgend'
+Hello! You are in dracut module!
+ ___________________
+
+< I'm dracut module >
+ -------------------
+   \
+    \
+        .--.
+       |o_o |
+       |:_/ |
+      //   \ \
+     (|     | )
+    /'\_   _/`\
+    \___)=(___/
+
+msgend
+sleep 10
+echo " continuing...."
+```
+Пересоздаём initrd:
+
+``` root@grub:~# dracut -f -v ```
+
+Обновляем конфигурацию загрузчика и перезагружаемся для проверки:
+```
+root@grub:~# update-grub
+root@grub:~# update-grub
+Sourcing file `/etc/default/grub'
+Sourcing file `/etc/default/grub.d/init-select.cfg'
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-5.15.0-102-generic
+Found initrd image: /boot/initrd.img-5.15.0-102-generic
+Warning: os-prober will not be executed to detect other bootable partitions.
+Systems on them will not be added to the GRUB boot configuration.
+Check GRUB_DISABLE_OS_PROBER documentation entry.
+done
+
+root@grub:~# reboot
+```
+![Image 5](screenshots/pic8.png)
