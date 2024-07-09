@@ -48,7 +48,7 @@ root@grub:~# reboot
 ![Image 1](screenshots/pic1.png)
 
 Способ № 1. init=/bin/bash
-В конце строки, начинающейся с linux, добавляем init=/bin/bash и нажимаем сtrl-x для загрузки в систему.
+В конце строки, начинающейся с linux, добавляем init=/bin/bash и нажимаем сtrl-x для загрузки в систему:
 
 ![Image 2](screenshots/pic2.png)
 
